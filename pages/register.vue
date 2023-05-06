@@ -24,12 +24,15 @@
           v-model="register.password"
         />
       </div>
-      <a href="signin.html" class="w-full btn btn-primary mt-[14px]">
-        Continue
-      </a>
       <button type="submit" class="w-full btn btn-primary mt-[14px]">
         Continue
       </button>
+      <NuxtLink
+        :to="{ name: 'login' }"
+        class="w-full border btn btn-white"
+      >
+        Back to Login
+      </NuxtLink>
     </form>
   </section>
 </template>

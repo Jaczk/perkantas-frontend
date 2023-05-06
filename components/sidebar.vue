@@ -28,18 +28,18 @@
       </div>
       <div class="flex flex-col gap-4">
         <div class="text-sm text-grey">Daily Use</div>
-        <a href="index.html" class="nav-link active">
+        <NuxtLink :to="{ name: 'Loan' }" class="nav-link active">
           <img src="/assets/svgs/ic-grid.svg" alt="" />
           Peminjaman
-        </a>
-        <a href="employees.html" class="nav-link">
+        </NuxtLink>
+        <NuxtLink :to="{ name: 'Procurement' }" class="nav-link">
           <img src="/assets/svgs/ic-users.svg" alt="" />
           Form Pengadaan
-        </a>
-        <a href="my_teams.html" class="nav-link">
+        </NuxtLink>
+        <NuxtLink :to="{ name: 'Good' }" class="nav-link">
           <img src="/assets/svgs/ic-briefcase.svg" alt="" />
           Daftar Barang
-        </a>
+        </NuxtLink>
       </div>
       <div class="flex flex-col gap-4">
         <div class="text-sm text-grey">Others</div>
@@ -59,10 +59,10 @@
           <img src="/assets/svgs/ic-settings.svg" alt="" />
           Settings
         </a>
-        <a href="#" class="nav-link">
-          <img src="/assets/svgs/ic-signout.svg" alt="" />
+        <button @click="this.$auth.logout()" class="nav-link">
+          <img src="/svgs/ic-signout.svg" alt="" />
           Logout
-        </a>
+        </button>
       </div>
     </div>
   </div>

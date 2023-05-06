@@ -32,6 +32,7 @@
 
 <script>
 export default {
+    middleware: 'auth',
   layout: "forms",
 }
 </script>
