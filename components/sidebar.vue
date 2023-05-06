@@ -28,7 +28,11 @@
       </div>
       <div class="flex flex-col gap-4">
         <div class="text-sm text-grey">Daily Use</div>
-        <NuxtLink :to="{ name: 'Loan' }" class="nav-link active">
+        <NuxtLink :to="{name: 'index'}" class="nav-link">
+            <img src="assets/svgs/ic-grid.svg" alt="" />
+            Overview
+          </NuxtLink>
+        <NuxtLink :to="{ name: 'Loan' }" class="nav-link">
           <img src="/assets/svgs/ic-grid.svg" alt="" />
           Peminjaman
         </NuxtLink>
@@ -60,7 +64,7 @@
           Settings
         </a>
         <button @click="this.$auth.logout()" class="nav-link">
-          <img src="/svgs/ic-signout.svg" alt="" />
+          <img src="assets/svgs/ic-signout.svg" alt="" />
           Logout
         </button>
       </div>
