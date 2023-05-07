@@ -22,9 +22,7 @@
             ></path>
           </svg>
         </a>
-        <div class="text-[32px] font-semibold text-dark">
-          Form Pengadaan Barang
-        </div>
+        <div class="text-[32px] font-semibold text-dark">Daftar Barang</div>
       </div>
       <div class="flex items-center gap-4">
         <form class="shrink md:w-[516px] w-full">
@@ -52,53 +50,78 @@
           class="flex flex-col justify-between gap-6 sm:items-center sm:flex-row"
         >
           <div>
-            <div class="text-xl font-medium text-dark">
-              Daftar Pengadaan Barang
+            <div class="text-xl font-medium text-grey" v-if="goods[0]">
+              Berdasarkan Kategori:
+              <span class="text-2xl text-dark">{{
+                goods[0].category.category_name
+              }}</span>
             </div>
-            <p class="text-grey">Empower company</p>
           </div>
-          <NuxtLink :to="{ name: 'Procurement-create' }" class="btn btn-primary"
-            >Buat Form</NuxtLink
-          >
+          <div>
+            <button onclick="history.back()" class="btn btn-primary">
+                Back
+            </button>
+          </div>
         </div>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-1 gap-[30px]">
+      <div class="grid gap-10 md:grid-cols-8 lg:grid-cols-2">
         <div
-          class="items-center card !flex-row gap-4"
-          v-for="procurement in procurements"
-          :key="procurement.id"
+          class="items-center card !flex-row gap-8"
+          v-for="good in goods"
+          :key="good.id"
         >
-          <a
-            href="#"
-            class="absolute inset-0 focus:ring-2 ring-primary rounded-[26px]"
-          ></a>
-          <img src="assets/svgs/ric-globe.svg" alt="" />
           <div>
-            <div class="mb-1 font-semibold text-dark">
-              {{ procurement.goods_name }} ({{ procurement.goods_amount }} buah)
+            <div class="flex justify-between">
+              <div class="text-lg font-bold text-dark">
+                {{ good.goods_name }}
+              </div>
+              <div>
+                <p
+                  v-if="good.condition === 'broken'"
+                  class="font-bold text-center text-red-600"
+                >
+                  {{ good.condition }}
+                </p>
+                <p
+                  v-else-if="good.condition === 'used'"
+                  class="font-bold text-center text-yellow-300"
+                >
+                  {{ good.condition }}
+                </p>
+                <p
+                  v-else-if="good.condition === 'new'"
+                  class="font-bold text-center text-success"
+                >
+                  {{ good.condition }}
+                </p>
+              </div>
             </div>
-            <p class="text-grey">{{ procurement.description }}</p>
+
+            <img :src="good.image" width="150" alt="" class="my-2" />
+            <p class="text-justify text-grey">{{ good.description }}</p>
           </div>
         </div>
       </div>
     </section>
   </div>
 </template>
-
-<script>
+  
+  <script>
 export default {
   middleware: 'auth',
   layout: 'dashboard',
   data() {
     return {
-      procurements: [],
+      goods: [],
     }
   },
   async fetch() {
-    await this.$axios.get('/procurement').then((response) => {
-      this.procurements = response.data.result.data
-    })
+    await this.$axios
+      .get('/goods?category_id=' + this.$route.params.id)
+      .then((response) => {
+        this.goods = response.data.result.data
+      })
   },
 }
 </script>
