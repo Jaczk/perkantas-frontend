@@ -113,25 +113,25 @@
           v-for="good in goods"
           :key="good.id"
         >
-          <div class="mx-2 font-semibold text-center text-dark">
+          <div class="mx-2 font-semibold text-center text-dark ">
             {{ good.goods_name }}
           </div>
           <img :src="good.image" width="150" class="mt-5" alt="" />
           <p
             v-if="good.condition === 'broken'"
-            class="mt-5 font-bold text-center text-red-600"
+            class="mt-5 font-bold text-center text-red-600 uppercase"
           >
             {{ good.condition }}
           </p>
           <p
             v-else-if="good.condition === 'used'"
-            class="mt-5 font-bold text-center text-yellow-300"
+            class="mt-5 font-bold text-center text-yellow-300 uppercase"
           >
             {{ good.condition }}
           </p>
           <p
             v-else-if="good.condition === 'new'"
-            class="mt-5 font-bold text-center text-success"
+            class="mt-5 font-bold text-center uppercase text-success" 
           >
             {{ good.condition }}
           </p>

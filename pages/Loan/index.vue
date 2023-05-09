@@ -58,9 +58,15 @@
               <div class="text-xl font-medium text-dark">Statistik</div>
               <p class="text-grey">Daftar Peminjaman Barang</p>
             </div>
-            <NuxtLink :to="{name:'Loan-create'}" class="btn btn-primary"
+            <div>
+              <NuxtLink :to="{name:'Loan-return'}" class="btn btn-primary"
+              >Kembalikan Barang</NuxtLink
+            >
+              <NuxtLink :to="{name:'Loan-create'}" class="btn btn-primary"
               >Buat Peminjaman</NuxtLink
             >
+            </div>
+            
           </div>
         </div>
 
@@ -165,7 +171,7 @@ export default {
     }
   },
   async fetch() {
-    await this.$axios.get('/items?limit=100').then((response) => {
+    await this.$axios.get('/items?is_returned=0&limit=100').then((response) => {
       this.items = response.data.result.data
     })
   },

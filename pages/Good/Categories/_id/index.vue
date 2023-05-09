@@ -58,9 +58,9 @@
             </div>
           </div>
           <div>
-            <button onclick="history.back()" class="btn btn-primary">
-                Back
-            </button>
+            <a onclick="history.back()" style="cursor:pointer">
+                <img src="/assets/svgs/ric-close-white.svg" alt="" />
+            </a>
           </div>
         </div>
       </div>
