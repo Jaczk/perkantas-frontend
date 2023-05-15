@@ -24,7 +24,7 @@
 <script>
 export default {
   middleware: 'auth',
-  layout: 'forms',
+  layout: 'UserForm',
   data() {
     return {
       currentLoanId: ''
@@ -36,7 +36,6 @@ export default {
         // Send Registration Data to Server
         let response = await this.$axios.post('/loan')
         this.currentLoanId = response.data.result.id;
-        this.$store.state.loan.loan_id = this.currentLoanId;
         this.$store.commit('loan/updateLoanId', this.currentLoanId);
         this.$router.push({ name: 'Loan-finish' })
       } catch (error) {

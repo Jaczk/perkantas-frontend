@@ -1,6 +1,7 @@
+// export const strict = false
 export const state = () => ({
-    loan_id:'',
-    good_id:'',
+    loan_id: '',
+    good_id: '',
 })
 
 export const mutations = {
@@ -11,3 +12,4 @@ export const mutations = {
         state.good_id = payload
     }
 }
+

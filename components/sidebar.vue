@@ -7,7 +7,7 @@
     <div class="px-6 py-[50px] gap-y-[50px] flex flex-col">
       <div class="flex items-center justify-between">
         <a href="#" class="flex justify-center">
-          <img src="/assets/svgs/logo-type.svg" alt="" />
+          <img src="/assets/images/perkantas.png" alt="" />
         </a>
         <a href="#" id="toggleCloseSidebar" class="lg:hidden">
           <svg
@@ -27,7 +27,7 @@
         </a>
       </div>
       <div class="flex flex-col gap-4">
-        <div class="text-sm text-grey">Daily Use</div>
+        <div class="text-lg font-bold text-grey">Daily Use</div>
         <NuxtLink :to="{name: 'index'}" class="nav-link">
             <img src="/assets/svgs/ic-home.svg" alt="" />
             Overview
@@ -46,7 +46,7 @@
         </NuxtLink>
       </div>
       <div class="flex flex-col gap-4">
-        <div class="text-sm text-grey">Others</div>
+        <div class="text-lg font-bold text-grey">Others</div>
         <a href="#" class="nav-link">
           <img src="/assets/svgs/ic-box.svg" alt="" />
           Insurances

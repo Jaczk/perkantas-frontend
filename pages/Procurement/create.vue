@@ -42,7 +42,7 @@
 <script>
 export default {
   middleware: 'auth',
-  layout: 'forms',
+  layout: 'UserForm',
   data() {
     return {
       procurement: {

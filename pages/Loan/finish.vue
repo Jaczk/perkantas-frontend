@@ -13,18 +13,17 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="grid grid-cols-2 grid-rows-none ">
+          <div class="grid grid-cols-2 grid-rows-none">
             <a
-              class="card !gap-y-0 bg-white hover:bg-sky-500 border-solid border-2 border-indigo-100 "
+              class="card !gap-y-0 bg-white hover:bg-sky-500 border-solid border-2 border-indigo-100"
               v-for="good in goods"
               :key="good.id"
               :id="good.id"
-              @click="addItem"
+              @click="addItem($event)"
             >
-              <div
-                class="font-semibold text-center text-dark justice-between"
-              >
-                <div>{{ good.goods_name }}</div>
+            <div class="p-3" >
+              <div class="font-semibold text-center text-dark justice-between">
+                <div>{{ good.goods_name }}  ({{ good.id }})</div>
                 <div>
                   <p
                     v-if="good.condition === 'broken'"
@@ -47,13 +46,15 @@
                 </div>
               </div>
               <!-- <img :src="good.image" width="150" alt="" /> -->
-              <p class="mt-2 text-grey" v-if="good.description.length<25">
+              <p class="mt-2 text-grey" v-if="good.description.length < 25">
                 {{ good.description }}
               </p>
-              <p class="mt-2 text-grey" v-if="good.description.length>=25">
-                {{ good.description.substring(0,25)+"..." }}
+              <p class="mt-2 text-grey" v-if="good.description.length >= 25">
+                {{ good.description.substring(0, 25) + '...' }}
               </p>
               <div class="justice-between"></div>
+            </div>
+              
             </a>
           </div>
         </div>
@@ -71,7 +72,7 @@
 <script>
 export default {
   middleware: 'auth',
-  layout: 'forms',
+  layout: 'UserForm',
   data() {
     return {
       goods: [],
@@ -82,6 +83,11 @@ export default {
     await this.$axios.get('/goods?is_available=1').then((response) => {
       this.goods = response.data.result.data
     })
+  },
+  computed: {
+    currentGoodId() {
+      return this.$store.state.loan.good_id
+    },
   },
   methods: {
     // async addItems() {
@@ -96,19 +102,17 @@ export default {
     //   console.log(response)
     // },
     async addItem(event) {
-        this.selectedItems = event.target.id
-        this.$store.commit('loan/updateGoodId', this.selectedItems)
-        await this.$axios
-          .post('/items', {
-            good_id: this.$store.state.loan.good_id,
-            loan_id: this.$store.state.loan.loan_id,
-          })
-          .then(
-            await this.$axios.put('/goods/' + this.selectedItems, {
-              is_available: 0,
-            })
-          )
-        this.$store.commit('loan/updateGoodId', '')
+      this.selectedItems = event.currentTarget.id
+      this.selectedItems = parseInt(this.selectedItems)
+      this.$store.commit('loan/updateGoodId', this.selectedItems)
+      await this.$axios.post('/items', {
+        good_id: this.$store.state.loan.good_id,
+        loan_id: this.$store.state.loan.loan_id,
+      })
+      this.$axios.put('/goods/' + this.$store.state.loan.good_id, {
+        is_available: 0,
+      })
+      this.$store.commit('loan/updateGoodId', '')
     },
   },
 }
