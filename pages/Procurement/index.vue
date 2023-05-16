@@ -30,10 +30,10 @@
         <form class="shrink md:w-[516px] w-full">
           <input
             type="text"
-            name=""
-            id=""
+            v-model="search"
             class="input-field !outline-none !border-none italic form-icon-search ring-indigo-200 focus:ring-2 transition-all duration-300 w-full"
-            placeholder="Search people, team, project"
+            placeholder="Search Procurements Data..."
+            @keyup="getProcurementData"
           />
         </form>
         <a
@@ -55,7 +55,9 @@
             <div class="text-xl font-medium text-dark">
               Daftar Pengadaan Barang
             </div>
-            <p class="text-grey">Empower company</p>
+            <p class="text-grey">
+              Ajukan Komplain Pengadaan Barang ke Admin di sini!
+            </p>
           </div>
           <NuxtLink :to="{ name: 'Procurement-create' }" class="btn btn-primary"
             >Buat Form</NuxtLink
@@ -93,12 +95,29 @@ export default {
   data() {
     return {
       procurements: [],
+      search: '',
     }
   },
   async fetch() {
     await this.$axios.get('/procurement').then((response) => {
       this.procurements = response.data.result.data
     })
+  },
+  methods: {
+    async getProcurementData() {
+      await this.$axios.get('/procurement').then((response) => {
+        this.procurements = response.data.result.data
+        if (this.search) {
+          this.procurements = response.data.result.data.filter((procurement) =>
+            procurement.goods_name
+              .toLowerCase()
+              .includes(this.search.toLowerCase())
+          )
+        } else {
+          this.procurements = response.data.result.data
+        }
+      })
+    },
   },
 }
 </script>

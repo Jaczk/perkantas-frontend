@@ -140,10 +140,22 @@
                 {{ item.good.goods_name }}
               </p>
               <div
-                class="mt-[10px] px-5 text-red-600 text-lg flex text-center"
+                class="mt-[10px] px-5 text-dark font-semibold text-lg flex text-center"
                 v-if="item.loan.return_date"
               >
                 {{ item.loan.return_date | formatDate }}
+              </div>
+              <div
+                class="mt-[10px] px-5 text-red-600 font-bold text-lg flex text-center"
+                v-if="parseDate(item.loan.return_date, new Date()).includes('Terlambat')"
+              >
+                {{ parseDate(item.loan.return_date, new Date())}}
+              </div>
+              <div
+                class="mt-[10px] px-5 text-green-600 font-bold text-lg flex text-center"
+                v-else
+              >
+                {{ parseDate(item.loan.return_date, new Date())}}
               </div>
             
           </div>
@@ -182,5 +194,15 @@ export default {
       })
     },
   },
+  methods: {
+    parseDate (start, end) {
+        let diffDate = moment(start).diff(moment(end), "days")
+        if (diffDate < 0) {
+          return diffDate * -1 + " Hari Terlambat"
+        }
+        return diffDate + 1 + " Hari Lagi"
+    }
+  },
+  
 }
 </script>

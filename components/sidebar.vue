@@ -27,8 +27,8 @@
         </a>
       </div>
       <div class="flex flex-col gap-4">
-        <div class="text-lg font-bold text-grey">Daily Use</div>
-        <NuxtLink :to="{name: 'index'}" class="nav-link">
+        <div class="text-lg font-bold text-secondary">Daily Use</div>
+        <NuxtLink :to="{name: 'index'}" class="nav-link ">
             <img src="/assets/svgs/ic-home.svg" alt="" />
             Overview
           </NuxtLink>
@@ -46,18 +46,10 @@
         </NuxtLink>
       </div>
       <div class="flex flex-col gap-4">
-        <div class="text-lg font-bold text-grey">Others</div>
+        <div class="text-lg font-bold text-secondary">Others</div>
         <a href="#" class="nav-link">
           <img src="/assets/svgs/ic-box.svg" alt="" />
           Insurances
-        </a>
-        <a href="#" class="nav-link">
-          <img src="/assets/svgs/ic-home.svg" alt="" />
-          Company
-        </a>
-        <a href="#" class="nav-link">
-          <img src="/assets/svgs/ic-gift.svg" alt="" />
-          Rewards
         </a>
         <a href="#" class="nav-link">
           <img src="/assets/svgs/ic-settings.svg" alt="" />

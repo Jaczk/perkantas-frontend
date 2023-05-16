@@ -1,10 +1,10 @@
 <template>
   <div>
     <section class="py-[70px] flex flex-col items-center justify-center px-4">
-      <div class="text-[32px] font-semibold text-dark">Finalizing Profile</div>
+      <div class="text-[32px] font-semibold text-dark">Pilih Barang</div>
       <p class="mt-4 text-base leading-7 text-center mb-[50px] text-grey">
-        Complete the information to make it more <br />
-        easier when introduce to team
+        Pilih Barang Yang akan Anda Pinjam! <br />
+        Batas Pengembalian Barang adalah <span class="text-lg font-bold">2 Minggu</span> dihitung dari tanggal peminjaman.
       </p>
       <form class="w-full max-w-2xl card">
         <div class="flex flex-col items-center mb-[14px]">
@@ -90,17 +90,6 @@ export default {
     },
   },
   methods: {
-    // async addItems() {
-    //   this.$store.state.loan.good_id = this.selectedItems
-    //   const loanId = this.$store.state.loan.loan_id
-    //   this.$store.commit('loan/updateGoodId', this.currentLoanId)
-    //   let response = await this.$axios.post('/items', {
-    //     good_id: this.$store.state.loan.good_id,
-    //     loan_id: loanId,
-    //   })
-    //   this.$store.commit('loan/updateGoodId', '')
-    //   console.log(response)
-    // },
     async addItem(event) {
       this.selectedItems = event.currentTarget.id
       this.selectedItems = parseInt(this.selectedItems)

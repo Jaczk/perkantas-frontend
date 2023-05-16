@@ -25,7 +25,7 @@
               ></path>
             </svg>
           </a>
-          <div class="text-[32px] font-semibold text-dark">Overview</div>
+          <div class="text-[32px] font-semibold text-dark">Dashboard</div>
         </div>
         <div class="flex items-center gap-4">
           <form class="shrink md:w-[516px] w-full">
@@ -61,39 +61,48 @@
           <div class="card !gap-y-0 min-h-[100px]">
             <div class="flex items-center justify-between">
               <div>
-                <p class="text-grey text-[24px] font-bold">Total Peminjaman</p>
+                <p class="text-grey text-[20px] font-bold">Barang yang Dapat Dipinjam</p>
                 <div class="text-[56px] font-bold text-dark mt-[6px]">
                   {{ goods.length }}
                 </div>
               </div>
             </div>
-            <NuxtLink :to="{ name: 'Loan-create' }" class="self-end w-1/2 btn btn-primary">
-              Tambah
+            <NuxtLink
+              :to="{ name: 'Loan-create' }"
+              class="self-end w-1/2 btn btn-primary"
+            >
+              Pinjam
             </NuxtLink>
           </div>
           <div class="card !gap-y-0 min-h-[100px]">
             <div class="flex items-center justify-between">
               <div>
-                <p class="text-grey text-[24px] font-bold">Total Pengajuan</p>
+                <p class="text-grey text-[23px] font-bold">Total Pengajuan Barang</p>
                 <div class="text-[56px] font-bold text-dark mt-[6px]">
                   {{ procurements.length }}
                 </div>
               </div>
             </div>
-            <NuxtLink :to="{ name: 'Procurement-create' }" class="self-end w-1/2 btn btn-primary">
-              Tambah
+            <NuxtLink
+              :to="{ name: 'Procurement-create' }"
+              class="self-end w-2/3 btn btn-primary"
+            >
+              Ajukan Lagi
             </NuxtLink>
           </div>
           <div class="card !gap-y-0 min-h-[100px]">
             <div class="flex items-center justify-between">
               <div>
-                <p class="text-grey text-[24px] font-bold">Barang Dipinjam</p>
+                <p class="text-grey text-[20px] font-bold">Barang Yang Masih Dipinjam</p>
                 <div class="text-[56px] font-bold text-dark mt-[6px]">
-                    {{ filteredItems.length }}
+                  {{ filteredItems.length }}
                 </div>
               </div>
             </div>
-            <NuxtLink :to="{ name: 'Procurement-create' }" class="self-end w-2/3 btn btn-primary">
+            <NuxtLink
+              :to="{ name: 'Procurement-create' }"
+              class="self-end w-2/3 btn btn-primary"
+            >
               Kembalikan
             </NuxtLink>
           </div>
@@ -130,7 +139,7 @@
           <!-- History -->
           <div>
             <!-- Section Header -->
-            <div class="mb-[30px]">
+            <!-- <div class="mb-[30px]">
               <div class="flex items-center justify-between gap-6">
                 <div>
                   <div class="text-xl font-medium text-dark">History</div>
@@ -149,7 +158,7 @@
                   Upload File
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -158,9 +167,6 @@
 </template>
 
 <script>
-import Raphael from 'raphael/raphael'
-global.Raphael = Raphael
-import { DonutChart } from 'vue-morris'
 export default {
   middleware: 'auth',
   layout: 'dashboard',
