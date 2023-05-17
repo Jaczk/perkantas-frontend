@@ -29,23 +29,6 @@
             Peminjaman Barang
           </div>
         </div>
-        <div class="flex items-center gap-4">
-          <form class="shrink md:w-[516px] w-full">
-            <input
-              type="text"
-              name=""
-              id=""
-              class="input-field !outline-none !border-none italic form-icon-search ring-indigo-200 focus:ring-2 transition-all duration-300 w-full"
-              placeholder="Search people, team, project"
-            />
-          </form>
-          <a
-            href="#"
-            class="flex-none w-[46px] h-[46px] bg-white rounded-full p-[11px] relative notification-dot"
-          >
-            <img src="/assets/svgs/ic-bell.svg" alt="" />
-          </a>
-        </div>
       </section>
 
       <section class="pt-[50px]">
@@ -59,14 +42,13 @@
               <p class="text-grey">Daftar Peminjaman Barang</p>
             </div>
             <div>
-              <NuxtLink :to="{name:'Loan-return'}" class="btn btn-primary"
-              >Kembalikan Barang</NuxtLink
-            >
-              <NuxtLink :to="{name:'Loan-create'}" class="btn btn-primary"
-              >Buat Peminjaman</NuxtLink
-            >
+              <NuxtLink :to="{ name: 'Loan-return' }" class="btn btn-primary"
+                >Kembalikan Barang</NuxtLink
+              >
+              <NuxtLink :to="{ name: 'Loan-create' }" class="btn btn-primary"
+                >Buat Peminjaman</NuxtLink
+              >
             </div>
-            
           </div>
         </div>
 
@@ -74,7 +56,7 @@
           <div class="card !gap-y-10">
             <div class="flex items-center justify-between">
               <div>
-                <p class="text-grey">Total Peminjaman</p>
+                <p class="text-grey">Total Peminjaman Barang</p>
                 <div class="text-[32px] font-bold text-dark mt-[6px]">
                   {{ items.length }}
                 </div>
@@ -124,40 +106,38 @@
             v-for="item in filteredItems"
             :key="item.id"
           >
-            
-              <a
-                href="#"
-                class="absolute inset-0 focus:ring-2 ring-primary rounded-[26px]"
-              ></a>
-              <div class="mb-2 font-semibold text-center text-dark">
-                No Peminjaman {{ item.loan_id }}
-              </div>
-              <img :src="item.good.image" width="150" alt="" />
-              <p
-                class="text-center text-grey mt-[8px]"
-                v-if="item.good.goods_name"
-              >
-                {{ item.good.goods_name }}
-              </p>
-              <div
-                class="mt-[10px] px-5 text-dark font-semibold text-lg flex text-center"
-                v-if="item.loan.return_date"
-              >
-                {{ item.loan.return_date | formatDate }}
-              </div>
-              <div
-                class="mt-[10px] px-5 text-red-600 font-bold text-lg flex text-center"
-                v-if="parseDate(item.loan.return_date, new Date()).includes('Terlambat')"
-              >
-                {{ parseDate(item.loan.return_date, new Date())}}
-              </div>
-              <div
-                class="mt-[10px] px-5 text-green-600 font-bold text-lg flex text-center"
-                v-else
-              >
-                {{ parseDate(item.loan.return_date, new Date())}}
-              </div>
-            
+            <div class="mb-2 font-semibold text-center text-dark">
+              No Peminjaman {{ item.loan_id }}
+            </div>
+            <img :src="item.good.image" width="150" alt="" />
+            <p
+              class="text-center text-grey mt-[8px]"
+              v-if="item.good.goods_name"
+            >
+              {{ item.good.goods_name }}
+            </p>
+            <div
+              class="mt-[10px] px-5 text-dark font-semibold text-lg flex text-center"
+              v-if="item.loan.return_date"
+            >
+              {{ item.loan.return_date | formatDate }}
+            </div>
+            <div
+              class="mt-[10px] px-5 text-red-600 font-bold text-lg flex text-center"
+              v-if="
+                parseDate(item.loan.return_date, new Date()).includes(
+                  'Terlambat'
+                )
+              "
+            >
+              {{ parseDate(item.loan.return_date, new Date()) }}
+            </div>
+            <div
+              class="mt-[10px] px-5 text-green-600 font-bold text-lg flex text-center"
+              v-else
+            >
+              {{ parseDate(item.loan.return_date, new Date()) }}
+            </div>
           </div>
         </div>
       </section>
@@ -195,14 +175,13 @@ export default {
     },
   },
   methods: {
-    parseDate (start, end) {
-        let diffDate = moment(start).diff(moment(end), "days")
-        if (diffDate < 0) {
-          return diffDate * -1 + " Hari Terlambat"
-        }
-        return diffDate + 1 + " Hari Lagi"
-    }
+    parseDate(start, end) {
+      let diffDate = moment(start).diff(moment(end), 'days')
+      if (diffDate < 0) {
+        return diffDate * -1 + ' Hari Terlambat'
+      }
+      return diffDate + 1 + ' Hari Lagi'
+    },
   },
-  
 }
 </script>

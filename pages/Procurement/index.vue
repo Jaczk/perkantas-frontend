@@ -32,7 +32,7 @@
             type="text"
             v-model="search"
             class="input-field !outline-none !border-none italic form-icon-search ring-indigo-200 focus:ring-2 transition-all duration-300 w-full"
-            placeholder="Search Procurements Data..."
+            placeholder="Cari Data Pengajuan..."
             @keyup="getProcurementData"
           />
         </form>

@@ -59,10 +59,10 @@
           </div>
         </div>
         <NuxtLink
-          :to="{ name: 'Loan' }"
+          :to="{ name: 'Loan-summary' }"
           class="w-full btn btn-primary mt-[14px]"
         >
-          Selesaikan Pinjaman
+         Lihat Ringkasan Peminjaman
         </NuxtLink>
       </form>
     </section>
