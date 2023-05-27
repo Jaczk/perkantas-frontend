@@ -77,6 +77,19 @@
           ></a>
           <img src="assets/svgs/ric-globe.svg" alt="" />
           <div>
+            <div class="place-items-end">
+              <div>
+              <div v-if="procurement.status === 'pending'" class="text-lg font-bold text-yellow-600 uppercase">
+                {{ procurement.status }}
+              </div>
+              <div v-else-if="procurement.status === 'approved'" class="text-lg font-bold text-green-600 uppercase">
+                {{ procurement.status }}
+              </div>
+              <div v-else-if="procurement.status === 'rejected'" class="text-lg font-bold text-red-600 uppercase">
+                {{ procurement.status }}
+              </div>
+            </div>              
+            </div>
             <div class="mb-1 font-semibold text-dark">
               {{ procurement.goods_name }} ({{ procurement.goods_amount }} buah)
             </div>

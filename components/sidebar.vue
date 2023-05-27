@@ -37,7 +37,7 @@
           Peminjaman
         </NuxtLink>
         <NuxtLink :to="{ name: 'Procurement' }" class="nav-link">
-          <img src="/assets/svgs/ic-users.svg" alt="" />
+          <img src="/assets/svgs/ic-box.svg" alt="" />
           Form Pengadaan
         </NuxtLink>
         <NuxtLink :to="{ name: 'Good' }" class="nav-link">
@@ -47,14 +47,10 @@
       </div>
       <div class="flex flex-col gap-4">
         <div class="text-lg font-bold text-secondary">Others</div>
-        <a href="#" class="nav-link">
-          <img src="/assets/svgs/ic-box.svg" alt="" />
-          Insurances
-        </a>
-        <a href="#" class="nav-link">
-          <img src="/assets/svgs/ic-settings.svg" alt="" />
-          Settings
-        </a>
+        <NuxtLink :to="{name: 'Profile'}" class="nav-link">
+          <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile
+        </NuxtLink>
         <button @click="$auth.logout()" class="nav-link">
           <img src="assets/svgs/ic-signout.svg" alt="" />
           Logout

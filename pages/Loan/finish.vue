@@ -15,7 +15,7 @@
         <div class="form-group">
           <div class="grid grid-cols-2 grid-rows-none">
             <a
-              class="card !gap-y-0 bg-white hover:bg-sky-500 border-solid border-2 border-indigo-100"
+              class="card !gap-y-0 bg-white hover:bg-sky-500 border-solid border-2 border-indigo-100 "
               v-for="good in goods"
               :key="good.id"
               :id="good.id"
@@ -97,6 +97,7 @@ export default {
       await this.$axios.post('/items', {
         good_id: this.$store.state.loan.good_id,
         loan_id: this.$store.state.loan.loan_id,
+        user_id: this.$auth.user.id,
       })
       this.$axios.put('/goods/' + this.$store.state.loan.good_id, {
         is_available: 0,

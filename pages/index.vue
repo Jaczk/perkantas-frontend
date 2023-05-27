@@ -27,23 +27,6 @@
           </a>
           <div class="text-[32px] font-semibold text-dark">Dashboard</div>
         </div>
-        <div class="flex items-center gap-4">
-          <form class="shrink md:w-[516px] w-full">
-            <input
-              type="text"
-              name=""
-              id=""
-              class="input-field !outline-none !border-none italic form-icon-search ring-indigo-200 focus:ring-2 transition-all duration-300 w-full"
-              placeholder="Search people, team, project"
-            />
-          </form>
-          <a
-            href="#"
-            class="flex-none w-[46px] h-[46px] bg-white rounded-full p-[11px] relative notification-dot"
-          >
-            <img src="/assets/svgs/ic-bell.svg" alt="" />
-          </a>
-        </div>
       </section>
 
       <section class="pt-[50px]">
@@ -77,7 +60,7 @@
           <div class="card !gap-y-0 min-h-[100px]">
             <div class="flex items-center justify-between">
               <div>
-                <p class="text-grey text-[23px] font-bold">Total Pengajuan Barang</p>
+                <p class="text-grey text-[24px] font-bold">Total Pengajuan Barang</p>
                 <div class="text-[56px] font-bold text-dark mt-[6px]">
                   {{ procurements.length }}
                 </div>
@@ -114,7 +97,7 @@
           <!-- Documents -->
           <div>
             <!-- Section Header -->
-            <div class="mb-[30px]">
+            <!-- <div class="mb-[30px]">
               <div class="flex items-center justify-between gap-6">
                 <div>
                   <div class="text-xl font-medium text-dark">Documents</div>
@@ -133,7 +116,7 @@
                   Upload File
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
 
           <!-- History -->

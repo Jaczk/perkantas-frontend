@@ -24,6 +24,11 @@
           v-model="register.password"
         />
       </div>
+      <div class="form-group">
+        <label for="" class="text-grey">Phone Number</label>
+        <input type="text" class="input-field" v-model="register.phone" />
+      </div>
+      <div class="font-semibold text-red-600" v-if="register.phone.length > 12">Tolong Masukkan no Telepon kurang dari 12 angka</div>
       <button type="submit" class="w-full btn btn-primary mt-[14px]">
         Continue
       </button>
@@ -46,6 +51,7 @@ export default {
         name: '',
         email: '',
         password: '',
+        phone: '',
       },
     }
   },

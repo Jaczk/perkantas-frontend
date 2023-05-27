@@ -28,10 +28,10 @@
         <form class="shrink md:w-[516px] w-full">
           <input
             type="text"
-            name=""
-            id=""
+            v-model="search"
+            @keyup="getGoodData"
             class="input-field !outline-none !border-none italic form-icon-search ring-indigo-200 focus:ring-2 transition-all duration-300 w-full"
-            placeholder="Search people, team, project"
+            placeholder="Cari Barang..."
           />
         </form>
         <a
@@ -114,6 +114,7 @@ export default {
   data() {
     return {
       goods: [],
+      search:''
     }
   },
   async fetch() {
@@ -123,5 +124,21 @@ export default {
         this.goods = response.data.result.data
       })
   },
+  methods: {
+    async getGoodData() {
+      await this.$axios.get('/goods?category_id=' + this.$route.params.id).then((response) => {
+        this.goods = response.data.result.data
+        if (this.search) {
+          this.goods = response.data.result.data.filter((good) =>
+            good.goods_name
+              .toLowerCase()
+              .includes(this.search.toLowerCase())
+          )
+        } else {
+          this.goods = response.data.result.data
+        }
+      })
+    },
+  }
 }
 </script>
