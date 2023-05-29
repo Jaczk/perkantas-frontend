@@ -4,7 +4,9 @@
       <div class="text-[32px] font-semibold text-dark">Pilih Barang</div>
       <p class="mt-4 text-base leading-7 text-center mb-[50px] text-grey">
         Pilih Barang Yang akan Anda Pinjam! <br />
-        Batas Pengembalian Barang adalah <span class="text-lg font-bold">2 Minggu</span> dihitung dari tanggal peminjaman.
+        Batas Pengembalian Barang adalah
+        <span class="text-lg font-bold">2 Minggu</span> dihitung dari tanggal
+        peminjaman.
       </p>
       <form class="w-full max-w-2xl card">
         <div class="flex flex-col items-center mb-[14px]">
@@ -15,46 +17,47 @@
         <div class="form-group">
           <div class="grid grid-cols-2 grid-rows-none">
             <a
-              class="card !gap-y-0 bg-white hover:bg-sky-500 border-solid border-2 border-indigo-100 "
+              class="card !gap-y-0 bg-white hover:bg-sky-500 border-solid border-2 border-indigo-100"
               v-for="good in goods"
               :key="good.id"
               :id="good.id"
               @click="addItem($event)"
             >
-            <div class="p-3" >
-              <div class="font-semibold text-center text-dark justice-between">
-                <div>{{ good.goods_name }}  ({{ good.id }})</div>
-                <div>
-                  <p
-                    v-if="good.condition === 'broken'"
-                    class="mt-1 font-bold text-center text-red-600 uppercase"
-                  >
-                    {{ good.condition }}
-                  </p>
-                  <p
-                    v-else-if="good.condition === 'used'"
-                    class="mt-1 font-bold text-center text-yellow-300 uppercase"
-                  >
-                    {{ good.condition }}
-                  </p>
-                  <p
-                    v-else-if="good.condition === 'new'"
-                    class="mt-1 font-bold text-center uppercase text-success"
-                  >
-                    {{ good.condition }}
-                  </p>
+              <div class="p-3">
+                <div
+                  class="font-semibold text-center text-dark justice-between"
+                >
+                  <div>{{ good.goods_name }} ({{ good.id }})</div>
+                  <div>
+                    <p
+                      v-if="good.condition === 'broken'"
+                      class="mt-1 font-bold text-center text-red-600 uppercase"
+                    >
+                      {{ good.condition }}
+                    </p>
+                    <p
+                      v-else-if="good.condition === 'used'"
+                      class="mt-1 font-bold text-center text-yellow-300 uppercase"
+                    >
+                      {{ good.condition }}
+                    </p>
+                    <p
+                      v-else-if="good.condition === 'new'"
+                      class="mt-1 font-bold text-center uppercase text-success"
+                    >
+                      {{ good.condition }}
+                    </p>
+                  </div>
                 </div>
+                <!-- <img :src="good.image" width="150" alt="" /> -->
+                <p class="mt-2 text-grey" v-if="good.description.length < 25">
+                  {{ good.description }}
+                </p>
+                <p class="mt-2 text-grey" v-if="good.description.length >= 25">
+                  {{ good.description.substring(0, 25) + '...' }}
+                </p>
+                <div class="justice-between"></div>
               </div>
-              <!-- <img :src="good.image" width="150" alt="" /> -->
-              <p class="mt-2 text-grey" v-if="good.description.length < 25">
-                {{ good.description }}
-              </p>
-              <p class="mt-2 text-grey" v-if="good.description.length >= 25">
-                {{ good.description.substring(0, 25) + '...' }}
-              </p>
-              <div class="justice-between"></div>
-            </div>
-              
             </a>
           </div>
         </div>
@@ -62,7 +65,7 @@
           :to="{ name: 'Loan-summary' }"
           class="w-full btn btn-primary mt-[14px]"
         >
-         Lihat Ringkasan Peminjaman
+          Lihat Ringkasan Peminjaman
         </NuxtLink>
       </form>
     </section>
@@ -70,6 +73,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 export default {
   middleware: 'auth',
   layout: 'UserForm',
@@ -91,6 +95,7 @@ export default {
   },
   methods: {
     async addItem(event) {
+      Swal.fire('Success!', 'Barang berhasil ditambahkan', 'success');
       this.selectedItems = event.currentTarget.id
       this.selectedItems = parseInt(this.selectedItems)
       this.$store.commit('loan/updateGoodId', this.selectedItems)
