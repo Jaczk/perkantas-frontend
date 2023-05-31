@@ -80,7 +80,7 @@
 
       <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-6 lg:gap-5">
         <div
-          class="card !gap-y-3"
+          class="card !gap-y-3 hover:bg-slate-100 hover:cursor-pointer"
           v-for="category in categories"
           :key="category.id"
         >
@@ -109,7 +109,7 @@
         class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:gap-10 lg:gap-3"
       >
         <div
-          class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0"
+          class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0 hover:bg-slate-200 hover:cursor-pointer"
           v-for="good in goods"
           :key="good.id"
         >
@@ -125,7 +125,7 @@
           </p>
           <p
             v-else-if="good.condition === 'used'"
-            class="mt-5 font-bold text-center text-yellow-300 uppercase"
+            class="mt-5 font-bold text-center text-orange-400 uppercase"
           >
             {{ good.condition }}
           </p>

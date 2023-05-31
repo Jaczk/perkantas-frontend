@@ -67,7 +67,7 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-1 gap-[30px]">
         <div
-          class="items-center card !flex-row gap-4"
+          class="items-center card !flex-row gap-4 hover:bg-slate-200 hover:cursor-pointer"
           v-for="procurement in procurements"
           :key="procurement.id"
         >

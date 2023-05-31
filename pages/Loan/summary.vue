@@ -20,19 +20,14 @@
           <div class="grid w-full grid-cols-1 grid-rows-none">
             <div v-for="(item, index) in items" :key="item.id" :id="item.id">
               <div class="p-3">
-                <div
-                  class="font-semibold text-center text-dark justice-between"
-                >
-                  <div class="justice-between">
-                    <div>{{ item.good.goods_name }} ({{ item.good.id }})</div>
-                    <div>
-                      <img
-                        src="/assets/svgs/ric-close-white.svg"
-                        alt=""
-                        @click="deleteItems(item, index)"
-                      />
-                    </div>
-                  </div>
+                <div class="justify-end"><img
+                      src="/assets/svgs/ric-close-white.svg"
+                      alt=""
+                      class="hover:cursor-pointer hover:opacity-50"
+                      @click="deleteItems(item, index)"
+                    /></div>
+                <div class="font-semibold text-center text-dark justice-evenly">
+                  <div>{{ item.good.goods_name }} ({{ item.good.id }}) </div>
 
                   <div>
                     <p
@@ -68,7 +63,6 @@
                 >
                   {{ item.good.description.substring(0, 75) + '...' }}
                 </p>
-                <div class="justice-between"></div>
               </div>
             </div>
           </div>
@@ -77,8 +71,7 @@
           :to="{ name: 'Loan' }"
           class="w-full btn btn-primary mt-[14px]"
         >
-        <a href="" @click="alert()">Selesaikan Pinjaman</a>
-          
+          <a href="" @click="deleteLoan()">Selesaikan Pinjaman</a>
         </NuxtLink>
       </form>
     </section>
@@ -108,10 +101,18 @@ export default {
       })
       this.$axios.delete('/items/' + item.id)
       this.items.splice(index, 1)
+      Swal.fire('Sukses!', 'Barang Berhasil Dihapus', 'warning')
     },
-    alert() {
-      Swal.fire('Sukses!', 'Anda Berhasil Melakukan Peminjaman', 'success')
-    },
+    // alert() {
+    //   Swal.fire('Sukses!', 'Anda Berhasil Melakukan Peminjaman', 'success')
+    // },
+    deleteLoan() {
+      if(this.items.length === 0){
+        this.$axios.delete('/loan/' + this.$store.state.loan.loan_id)
+        return Swal.fire('Warning!', 'Anda Tidak Melakukan Peminjaman', 'question')
+      }
+      return Swal.fire('Sukses!', 'Anda Berhasil Melakukan Peminjaman', 'success')
+    },  
   },
 }
 </script>

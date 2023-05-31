@@ -17,7 +17,7 @@
         <div class="form-group">
           <div class="grid grid-cols-2 grid-rows-none">
             <a
-              class="card !gap-y-0 bg-white hover:bg-sky-500 border-solid border-2 border-indigo-100"
+              class="card !gap-y-0 bg-white hover:bg-slate-100 border-solid border-2 border-indigo-100 hover:cursor-pointer"
               v-for="(good, index) in goods"
               :key="good.id"
               :id="good.id"
@@ -37,7 +37,7 @@
                     </p>
                     <p
                       v-else-if="good.condition === 'used'"
-                      class="mt-1 font-bold text-center text-yellow-300 uppercase"
+                      class="mt-1 font-bold text-center text-orange-400 uppercase "
                     >
                       {{ good.condition }}
                     </p>
