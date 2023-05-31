@@ -18,10 +18,10 @@
           <div class="grid grid-cols-2 grid-rows-none">
             <a
               class="card !gap-y-0 bg-white hover:bg-sky-500 border-solid border-2 border-indigo-100"
-              v-for="good in goods"
+              v-for="(good, index) in goods"
               :key="good.id"
               :id="good.id"
-              @click="addItem($event)"
+              @click="addItem($event, index)"
             >
               <div class="p-3">
                 <div
@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
 export default {
   middleware: 'auth',
   layout: 'UserForm',
@@ -94,12 +94,11 @@ export default {
     },
   },
   methods: {
-    async addItem(event) {
-      Swal.fire('Success!', 'Barang berhasil ditambahkan', 'success');
+    addItem(event, index) {
       this.selectedItems = event.currentTarget.id
       this.selectedItems = parseInt(this.selectedItems)
       this.$store.commit('loan/updateGoodId', this.selectedItems)
-      await this.$axios.post('/items', {
+      this.$axios.post('/items', {
         good_id: this.$store.state.loan.good_id,
         loan_id: this.$store.state.loan.loan_id,
         user_id: this.$auth.user.id,
@@ -108,6 +107,8 @@ export default {
         is_available: 0,
       })
       this.$store.commit('loan/updateGoodId', '')
+      this.goods.splice(index, 1)
+      Swal.fire('Sukses', 'Barang berhasil ditambahkan!', 'success')
     },
   },
 }
