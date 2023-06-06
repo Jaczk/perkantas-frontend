@@ -42,10 +42,29 @@
               <p class="text-grey">Daftar Peminjaman Barang</p>
             </div>
             <div>
-              <NuxtLink :to="{ name: 'Loan-return' }" class="btn btn-primary"
+              <button
+                class="cursor-not-allowed btn btn-primary"
+                @click="alertReturn"
+                v-if="can_return === 0"
+              >
+                Kembalikan Barang
+              </button>
+              <NuxtLink
+                :to="{ name: 'Loan-return' }"
+                class="btn btn-primary"
+                v-else-if="can_return === 1"
                 >Kembalikan Barang</NuxtLink
               >
-              <NuxtLink :to="{ name: 'Loan-create' }" class="btn btn-primary"
+              <button
+                @click="alertLoan"
+                class="cursor-not-allowed btn btn-primary"
+                v-if="can_loan === 0"
+                >Buat Peminjaman</button
+              >
+              <NuxtLink
+                :to="{ name: 'Loan-create' }"
+                class="btn btn-primary"
+                v-else-if="can_loan === 1"
                 >Buat Peminjaman</NuxtLink
               >
             </div>
@@ -148,6 +167,7 @@
 <script>
 import moment from 'moment'
 import Vue from 'vue'
+import Swal from 'sweetalert2'
 
 Vue.filter('formatDate', function (value) {
   if (value) {
@@ -160,6 +180,8 @@ export default {
   data() {
     return {
       items: [],
+      can_return: this.$store.state.auth.user.can_return,
+      can_loan: this.$store.state.auth.user.can_loan,
     }
   },
   async fetch() {
@@ -181,6 +203,32 @@ export default {
         return diffDate * -1 + ' Hari Terlambat'
       }
       return diffDate + 1 + ' Hari Lagi'
+    },
+    alertReturn() {
+      Swal.fire({
+        toast: true,
+        text: 'Hubungi Admin untuk melakukan pengembalian barang',
+        icon: 'warning',
+        title: 'Warning!',
+        position: 'top-right',
+        iconColor: 'white',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      })
+    },
+    alertLoan() {
+      Swal.fire({
+        toast: true,
+        text: 'Hubungi Admin untuk melakukan peminjaman barang',
+        icon: 'warning',
+        title: 'Warning!',
+        position: 'top-right',
+        iconColor: 'white',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      })
     },
   },
 }

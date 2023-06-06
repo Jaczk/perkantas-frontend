@@ -50,8 +50,16 @@
                 </div>
               </div>
             </div>
+            <button
+              @click="alertLoan"
+              v-if="can_loan === 0"
+              class="self-end w-1/2 cursor-not-allowed btn btn-primary "
+            >
+              Pinjam
+          </button>
             <NuxtLink
               :to="{ name: 'Loan-create' }"
+              v-else-if="can_loan === 1"
               class="self-end w-1/2 btn btn-primary"
             >
               Pinjam
@@ -82,8 +90,16 @@
                 </div>
               </div>
             </div>
+            <button
+            @click="alertReturn"
+            v-if="can_return === 0"
+              class="self-end w-1/2 cursor-not-allowed btn btn-primary "
+            >
+              Kembalikan
+          </button>
             <NuxtLink
-              :to="{ name: 'Procurement-create' }"
+              :to="{ name: 'Loan-return' }"
+              v-else-if="can_return === 1"
               class="self-end w-2/3 btn btn-primary"
             >
               Kembalikan
@@ -150,6 +166,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 export default {
   middleware: 'auth',
   layout: 'dashboard',
@@ -158,6 +175,8 @@ export default {
       items: [],
       procurements: [],
       goods: [],
+      can_return: this.$store.state.auth.user.can_return,
+      can_loan: this.$store.state.auth.user.can_loan,
     }
   },
   async fetch() {
@@ -178,5 +197,33 @@ export default {
       })
     },
   },
+  methods:{
+    alertReturn() {
+      Swal.fire({
+        toast: true,
+        text: 'Hubungi Admin untuk melakukan pengembalian barang',
+        icon: 'warning',
+        title: 'Warning!',
+        position: 'top-right',
+        iconColor: 'white',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      })
+    },
+    alertLoan() {
+      Swal.fire({
+        toast: true,
+        text: 'Hubungi Admin untuk melakukan peminjaman barang',
+        icon: 'warning',
+        title: 'Warning!',
+        position: 'top-right',
+        iconColor: 'white',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      })
+    },
+  }
 }
 </script>

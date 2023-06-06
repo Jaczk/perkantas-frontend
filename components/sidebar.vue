@@ -28,30 +28,30 @@
       </div>
       <div class="flex flex-col gap-4">
         <div class="text-lg font-bold text-secondary">Daily Use</div>
-        <NuxtLink :to="{name: 'index'}" class="nav-link ">
+        <NuxtLink :to="{name: 'index'}" class="nav-link hover:bg-slate-100">
             <img src="/assets/svgs/ic-home.svg" alt="" />
             Overview
           </NuxtLink>
-        <NuxtLink :to="{ name: 'Loan' }" class="nav-link">
+        <NuxtLink :to="{ name: 'Loan' }" class="nav-link hover:bg-slate-100">
           <img src="/assets/svgs/ic-grid.svg" alt="" />
           Peminjaman
         </NuxtLink>
-        <NuxtLink :to="{ name: 'Procurement' }" class="nav-link">
+        <NuxtLink :to="{ name: 'Procurement' }" class="nav-link hover:bg-slate-100">
           <img src="/assets/svgs/ic-box.svg" alt="" />
           Form Pengadaan
         </NuxtLink>
-        <NuxtLink :to="{ name: 'Good' }" class="nav-link">
+        <NuxtLink :to="{ name: 'Good' }" class="nav-link hover:bg-slate-100">
           <img src="/assets/svgs/ic-briefcase.svg" alt="" />
           Daftar Barang
         </NuxtLink>
       </div>
       <div class="flex flex-col gap-4">
         <div class="text-lg font-bold text-secondary">Others</div>
-        <NuxtLink :to="{name: 'Profile'}" class="nav-link">
+        <NuxtLink :to="{name: 'Profile'}" class="nav-link hover:bg-slate-100">
           <img src="/assets/svgs/ic-users.svg" alt="" />
           Profile
         </NuxtLink>
-        <button @click="$auth.logout()" class="nav-link">
+        <button @click="$auth.logout()" class="nav-link hover:bg-slate-100">
           <img src="assets/svgs/ic-signout.svg" alt="" />
           Logout
         </button>
