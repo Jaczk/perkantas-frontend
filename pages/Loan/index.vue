@@ -2,7 +2,7 @@
   <div>
     <!-- Main Content -->
     <div
-      class="lg:pr-[70px] py-[50px] lg:ml-[320px] xl:ml-[365px] px-4 lg:pl-0"
+      class="lg:pr-[70px] py-[50px] px-4 lg:pl-0 lg:ml-12"
     >
       <!-- Top Section -->
       <section

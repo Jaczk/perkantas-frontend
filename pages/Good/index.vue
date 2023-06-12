@@ -1,6 +1,6 @@
 <template>
   <!-- Main Content -->
-  <div class="lg:pr-[70px] py-[50px] lg:ml-[320px] xl:ml-[365px] px-4 lg:pl-0">
+  <div class="lg:pr-[70px] py-[50px] px-4 lg:pl-0 lg:ml-12">
     <!-- Top Section -->
     <section
       class="flex flex-col flex-wrap justify-between gap-6 md:items-center md:flex-row"

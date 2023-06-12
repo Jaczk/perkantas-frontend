@@ -1,13 +1,13 @@
 <template>
   <!-- Sidebar -->
   <div
-    class="hidden lg:block fixed lg:max-w-[295px] w-full overflow-y-auto h-full bg-white z-[999]"
+    class="hidden lg:block sticky top-0 left lg:max-w-[295px] w-full overflow-y-auto h-full bg-white z-0"
     id="sidebarHRIS"
   >
     <div class="px-6 py-[50px] gap-y-[50px] flex flex-col">
       <div class="flex items-center justify-between">
         <a href="#" class="flex justify-center">
-          <img src="/assets/images/perkantas.png" alt="" />
+          <img src="/assets/images/perkantas.png" alt="" class="hover:scale-110"/>
         </a>
         <a href="#" id="toggleCloseSidebar" class="lg:hidden">
           <svg
@@ -28,33 +28,66 @@
       </div>
       <div class="flex flex-col gap-4">
         <div class="text-lg font-bold text-secondary">Daily Use</div>
-        <NuxtLink :to="{name: 'index'}" class="nav-link hover:bg-slate-100">
+        <NuxtLink :to="{name: 'index'}" class="nav-link hover:bg-slate-100 hover:text-xl">
             <img src="/assets/svgs/ic-home.svg" alt="" />
             Overview
           </NuxtLink>
-        <NuxtLink :to="{ name: 'Loan' }" class="nav-link hover:bg-slate-100">
+        <NuxtLink :to="{ name: 'Loan' }" class="nav-link hover:bg-slate-100 hover:text-xl">
           <img src="/assets/svgs/ic-grid.svg" alt="" />
           Peminjaman
         </NuxtLink>
-        <NuxtLink :to="{ name: 'Procurement' }" class="nav-link hover:bg-slate-100">
+        <NuxtLink :to="{ name: 'Procurement' }" class="nav-link hover:bg-slate-100 hover:text-xl">
           <img src="/assets/svgs/ic-box.svg" alt="" />
           Form Pengadaan
         </NuxtLink>
-        <NuxtLink :to="{ name: 'Good' }" class="nav-link hover:bg-slate-100">
+        <NuxtLink :to="{ name: 'Good' }" class="nav-link hover:bg-slate-100 hover:text-xl">
           <img src="/assets/svgs/ic-briefcase.svg" alt="" />
           Daftar Barang
         </NuxtLink>
       </div>
       <div class="flex flex-col gap-4">
         <div class="text-lg font-bold text-secondary">Others</div>
-        <NuxtLink :to="{name: 'Profile'}" class="nav-link hover:bg-slate-100">
+        <!-- <NuxtLink :to="{name: 'Profile'}" class="nav-link hover:bg-slate-100">
           <img src="/assets/svgs/ic-users.svg" alt="" />
           Profile
-        </NuxtLink>
-        <button @click="$auth.logout()" class="nav-link hover:bg-slate-100">
+        </NuxtLink> -->
+        <button @click="$auth.logout()" class="nav-link hover:bg-slate-100 hover:text-xl">
           <img src="assets/svgs/ic-signout.svg" alt="" />
           Logout
         </button>
+        <NuxtLink :to="{name: '/'}" class="cursor-default nav-link disabled:true">
+          <!-- <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile -->
+        </NuxtLink>
+
+        <NuxtLink :to="{name: '/'}" class="cursor-default nav-link disabled:true">
+          <!-- <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile -->
+        </NuxtLink>
+        <NuxtLink :to="{name: '/'}" class="cursor-default nav-link disabled:true">
+          <!-- <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile -->
+        </NuxtLink>
+        <NuxtLink :to="{name: '/'}" class="cursor-default nav-link disabled:true">
+          <!-- <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile -->
+        </NuxtLink>
+        <NuxtLink :to="{name: '/'}" class="cursor-default nav-link disabled:true">
+          <!-- <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile -->
+        </NuxtLink>
+        <NuxtLink :to="{name: '/'}" class="cursor-default nav-link disabled:true">
+          <!-- <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile -->
+        </NuxtLink>
+        <NuxtLink :to="{name: '/'}" class="cursor-default nav-link disabled:true">
+          <!-- <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile -->
+        </NuxtLink>
+        <NuxtLink :to="{name: '/'}" class="cursor-default nav-link disabled:true">
+          <!-- <img src="/assets/svgs/ic-users.svg" alt="" />
+          Profile -->
+        </NuxtLink>
       </div>
     </div>
   </div>

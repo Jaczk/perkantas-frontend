@@ -2,7 +2,7 @@
   <div>
     <!-- Main Content -->
     <div
-      class="lg:pr-[70px] py-[50px] lg:ml-[320px] xl:ml-[365px] px-4 lg:pl-0"
+      class="lg:pr-[70px] py-[50px] px-4 lg:pl-0 lg:ml-12 "
     >
       <!-- Top Section -->
       <section
@@ -52,7 +52,7 @@
             </div>
             <NuxtLink
               :to="{ name: 'Loan-create' }"
-              class="self-end w-1/2 btn btn-primary"
+              class="self-end w-2/3 btn btn-primary hover:text-lg"
             >
               Pinjam
             </NuxtLink>
@@ -68,7 +68,7 @@
             </div>
             <NuxtLink
               :to="{ name: 'Procurement-create' }"
-              class="self-end w-2/3 btn btn-primary"
+              class="self-end w-2/3 btn btn-primary hover:text-lg"
             >
               Ajukan Lagi
             </NuxtLink>
@@ -85,14 +85,14 @@
             <button
             @click="alertReturn"
             v-if="can_return === 0"
-              class="self-end w-1/2 cursor-not-allowed btn btn-primary "
+              class="self-end w-2/3 cursor-not-allowed btn btn-primary "
             >
               Kembalikan
           </button>
             <NuxtLink
               :to="{ name: 'Loan-return' }"
               v-else-if="can_return === 1"
-              class="self-end w-2/3 btn btn-primary"
+              class="self-end w-2/3 btn btn-primary hover:text-lg"
             >
               Kembalikan
             </NuxtLink>
